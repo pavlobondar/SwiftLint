@@ -11,7 +11,7 @@ private extension SwiftLintFile {
             missingDocOffsets(in: $0, acls: acls)
         }
         let extensionKinds: Set<SwiftDeclarationKind> = [.extension, .extensionEnum, .extensionClass,
-                                                         .extensionStruct, .extensionProtocol]
+                                                         .extensionStruct, .extensionProtocol, .enumcase]
         guard let kind = dictionary.declarationKind,
             !extensionKinds.contains(kind),
             case let isDeinit = kind == .functionMethodInstance && dictionary.name == "deinit",
@@ -101,7 +101,7 @@ public struct MissingDocsRule: OptInRule, ConfigurationProviderRule, AutomaticTe
         let dict = file.structureDictionary
         return file.missingDocOffsets(in: dict, acls: acls).map { offset, acl in
             StyleViolation(ruleDescription: Self.description,
-                           severity: configuration.parameters.first { $0.value == acl }?.severity ?? .warning,
+                           severity: configuration.parameters.first { $0.value == acl }?.severity ?? .error,
                            location: Location(file: file, byteOffset: offset),
                            reason: "\(acl.description) declarations should be documented.")
         }

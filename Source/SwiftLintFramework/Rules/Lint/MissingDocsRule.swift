@@ -11,7 +11,7 @@ private extension SwiftLintFile {
             missingDocOffsets(in: $0, acls: acls)
         }
         let extensionKinds: Set<SwiftDeclarationKind> = [.extension, .extensionEnum, .extensionClass,
-                                                         .extensionStruct, .extensionProtocol, .enumcase]
+                                                         .extensionStruct, .extensionProtocol]
         guard let kind = dictionary.declarationKind,
             !extensionKinds.contains(kind),
             case let isDeinit = kind == .functionMethodInstance && dictionary.name == "deinit",

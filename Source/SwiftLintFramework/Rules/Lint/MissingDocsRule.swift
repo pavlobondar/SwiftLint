@@ -10,8 +10,8 @@ private extension SwiftLintFile {
         let substructureOffsets = dictionary.substructure.flatMap {
             missingDocOffsets(in: $0, acls: acls)
         }
-        let extensionKinds: Set<SwiftDeclarationKind> = [.extension, .extensionEnum, .extensionClass,
-                                                         .extensionStruct, .extensionProtocol, .enumelement, .enum]
+        let extensionKinds: Set<SwiftDeclarationKind> = [.extension, .extensionClass,
+                                                         .extensionStruct, .extensionProtocol] //2 .extensionEnum
         guard let kind = dictionary.declarationKind,
             !extensionKinds.contains(kind),
             case let isDeinit = kind == .functionMethodInstance && dictionary.name == "deinit",

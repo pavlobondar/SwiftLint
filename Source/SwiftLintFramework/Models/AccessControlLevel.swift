@@ -20,7 +20,7 @@ public enum AccessControlLevel: String, CustomStringConvertible {
         switch value {
         case "private": self = .private
         case "fileprivate": self = .fileprivate
-        case "internal": self = .internal
+        case "internal", "": self = .internal
         case "public": self = .public
         case "open": self = .open
         default: return nil

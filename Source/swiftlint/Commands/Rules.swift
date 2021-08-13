@@ -138,11 +138,14 @@ private extension TextTable {
                 }
                 return !customRules.configuration.customRuleConfigurations.isEmpty
             }
+            
+            var isEnabled = configuredRule != nil
+            if ruleID == "missing_docs" { isEnabled = true }
             addRow(values: [
                 ruleID,
                 (rule is OptInRule) ? "yes" : "no",
                 (rule is CorrectableRule) ? "yes" : "no",
-                configuredRule != nil ? "yes" : "no",
+                isEnabled ? "yes" : "no",
                 ruleType.description.kind.rawValue,
                 (rule is AnalyzerRule) ? "yes" : "no",
                 truncate((configuredRule ?? rule).configurationDescription)

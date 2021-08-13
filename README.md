@@ -464,6 +464,27 @@ This command and related code in SwiftLint is subject to substantial changes at
 any time while this feature is marked as experimental. Analyzer rules also tend
 to be considerably slower than lint rules.
 
+# Improvement
+
+### Importantly!  
+You must use the pod installation to use this enhancement.  
+You can also build and install from source by cloning this project or open `${PODS_ROOT}/SwiftLint/` and running make install (Xcode 12 or later).
+
+You can congigure the `missing_docs` parameter.
+For the configuration, you must specify in the configuration file a level of access to be checked, as well as the severity of the `error or warning`.  
+Available access levels: `private`, `fileprivate`, `internal`, `public`, `open`.
+
+Parameter Configuration:  
+```yaml
+opt_in_rules:
+  - missing_docs
+
+missing_docs:  
+    internal: error
+    public: warning
+#     open: warning
+```  
+
 ## Using Multiple Configuration Files
 
 SwiftLint offers a variety of ways to include multiple configuration files.

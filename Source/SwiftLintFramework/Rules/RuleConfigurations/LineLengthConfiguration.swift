@@ -87,7 +87,7 @@ public struct LineLengthConfiguration: RuleConfiguration, Equatable {
             configDict.isNotEmpty else {
             throw error
         }
-
+        
         for (string, value) in configDict {
             guard let key = ConfigurationKey(rawValue: string) else {
                 throw error
